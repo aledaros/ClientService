@@ -1,5 +1,5 @@
-﻿using Gruppo3.Clienti.Application.Interfaces.Repositories;
-using Gruppo3.ClientiDTO.Domain.Entities;
+﻿using Gruppo3.Clienti.Domain.Repositories;
+using Gruppo3.Clienti.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using RepoDb;
 using System.Data.SqlClient;

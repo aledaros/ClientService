@@ -1,9 +1,5 @@
-﻿using Gruppo3.Clienti.Application.Interfaces.Repositories;
-using Gruppo3.Clienti.Application.Interfaces.Services;
+﻿using Gruppo3.Clienti.Application.Interfaces.Services;
 using Gruppo3.Clienti.Domain.DTO;
-using Gruppo3.Clienti.Infrastructure.Repositories;
-using Gruppo3.ClientiDTO.Domain.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gruppo3.Clienti.WebAPI.Controllers
@@ -25,24 +21,24 @@ namespace Gruppo3.Clienti.WebAPI.Controllers
         }
 
         [HttpPut]
-        public JsonResult Put(Client client)
+        public JsonResult Put(UpdateClientDTO client)
         {
             _rep.UpdateClient(client);
             return new JsonResult(client);
         }
 
         [HttpPost]
-        public JsonResult Insert(Client client)
+        public JsonResult Insert(InsertClientDTO client)
         {
             _rep.InsertClient(client);
             return new JsonResult(client);
         }
 
-        [HttpDelete("{id}")]
-        public JsonResult Delete(int id)
+        [HttpDelete]
+        public JsonResult Delete(DeleteClientDTO client)
         {
-            _rep.DeleteClient(id);
-            return new JsonResult(id);
+            _rep.DeleteClient(client);
+            return new JsonResult(client);
         }
 
     }

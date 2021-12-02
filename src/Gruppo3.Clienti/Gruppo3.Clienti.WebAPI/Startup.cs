@@ -1,19 +1,13 @@
-using Gruppo3.Clienti.Application.Interfaces.Repositories;
+using Gruppo3.Clienti.Application.Interfaces.Services;
+using Gruppo3.Clienti.Application.Services;
+using Gruppo3.Clienti.Domain.Repositories;
 using Gruppo3.Clienti.Infrastructure.Repositories;
-using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Gruppo3.Clienti.WebAPI
 {
@@ -36,8 +30,13 @@ namespace Gruppo3.Clienti.WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gruppo3.Clienti.WebAPI", Version = "v1" });
             });
 
-            services.AddSingleton<IClientRepository,ClientRepository>();
-            
+            //client
+            services.AddSingleton<IClientRepository, ClientRepository>();
+            services.AddSingleton<IClientService, ClientService>();
+
+            //order
+            services.AddSingleton<IOrderRepository, OrderRepository>();
+
             RepoDb.SqlServerBootstrap.Initialize();
 
 

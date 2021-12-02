@@ -1,4 +1,4 @@
-﻿using Gruppo3.Clienti.Application.Interfaces.Repositories;
+﻿using Gruppo3.Clienti.Domain.Repositories;
 using Gruppo4MicroserviziDTO.DTOs;
 using Microsoft.Extensions.Configuration;
 using RepoDb;

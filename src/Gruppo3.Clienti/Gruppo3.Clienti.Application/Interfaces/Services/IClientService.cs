@@ -1,9 +1,4 @@
 ﻿using Gruppo3.Clienti.Domain.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gruppo3.Clienti.Application.Interfaces.Services
 {

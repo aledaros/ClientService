@@ -1,4 +1,4 @@
-﻿using Gruppo3.ClientiDTO.Domain.Entities;
+﻿using Gruppo3.Clienti.Domain.Entities;
 
 namespace Gruppo3.Clienti.Domain.DTO
 {

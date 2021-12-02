@@ -1,9 +1,4 @@
-﻿using Gruppo3.ClientiDTO.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Gruppo3.Clienti.Domain.Entities;
 
 namespace Gruppo3.Clienti.Domain.DTO
 {

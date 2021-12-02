@@ -1,6 +1,6 @@
 ﻿using Gruppo4MicroserviziDTO.DTOs;
 
-namespace Gruppo3.Clienti.Application.Interfaces.Repositories
+namespace Gruppo3.Clienti.Domain.Repositories
 {
     public interface IOrderRepository
     {

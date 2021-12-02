@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="RepoDb" Version="1.12.9" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\..\ClientServiceDTO\src\Gruppo3.ClientiDTO\Gruppo3.ClientiDTO.Domain\Gruppo3.ClientiDTO.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\Gruppo4-Microservizi-DTO\Gruppo4MicroserviziDTO.csproj" />
   </ItemGroup>
 
 </Project>

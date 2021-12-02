@@ -1,3 +1,4 @@
+using Gruppo3.Clienti.Application.Interfaces.Repositories;
 using Gruppo3.Clienti.Infrastructure.Repositories;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
@@ -35,7 +36,10 @@ namespace Gruppo3.Clienti.WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gruppo3.Clienti.WebAPI", Version = "v1" });
             });
 
-            services.AddSingleton<ClientRepository>();
+            services.AddSingleton<IClientRepository,ClientRepository>();
+            
+            RepoDb.SqlServerBootstrap.Initialize();
+
 
         }
 

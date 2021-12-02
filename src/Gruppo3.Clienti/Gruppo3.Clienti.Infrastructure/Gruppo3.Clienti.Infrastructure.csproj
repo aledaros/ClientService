@@ -6,7 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+<<<<<<< Updated upstream
     <PackageReference Include="RepoDb.SqlServer" Version="1.1.4" />
+=======
+    <PackageReference Include="RepoDb" Version="1.12.9" />
+    <PackageReference Include="RepoDb.SqlServer" Version="1.1.4" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+>>>>>>> Stashed changes
   </ItemGroup>
 
   <ItemGroup>

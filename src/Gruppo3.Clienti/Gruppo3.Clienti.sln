@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31829.152
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gruppo3.Clienti.Domain", "Gruppo3.Clienti.Domain\Gruppo3.Clienti.Domain.csproj", "{E070620C-C701-4C09-9F5D-357B222746D9}"
 EndProject
@@ -9,9 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gruppo3.ClientiDTO.Domain",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gruppo3.Clienti.WebAPI", "Gruppo3.Clienti.WebAPI\Gruppo3.Clienti.WebAPI.csproj", "{4C1A2A5B-ADF2-4457-856F-A798C167FC1D}"
 EndProject
+<<<<<<< Updated upstream
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gruppo3.Clienti.Application", "Gruppo3.Clienti.Application\Gruppo3.Clienti.Application.csproj", "{4D70F020-C73C-4183-9595-1422C6B2C37C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gruppo3.Clienti.Infrastructure", "Gruppo3.Clienti.Infrastructure\Gruppo3.Clienti.Infrastructure.csproj", "{88D3DC61-8461-44E8-8239-0C8A6A1E5F0E}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gruppo3.Clienti.Core", "Gruppo3.Clienti.Core\Gruppo3.Clienti.Core.csproj", "{29BF5170-1508-40FE-994D-1A0338465E9B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gruppo4MicroserviziDTO", "..\..\..\Gruppo4-Microservizi-DTO\Gruppo4MicroserviziDTO.csproj", "{46F42591-3326-497B-9ED2-70AA09E106B3}"
+>>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +37,7 @@ Global
 		{4C1A2A5B-ADF2-4457-856F-A798C167FC1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C1A2A5B-ADF2-4457-856F-A798C167FC1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C1A2A5B-ADF2-4457-856F-A798C167FC1D}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< Updated upstream
 		{4D70F020-C73C-4183-9595-1422C6B2C37C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4D70F020-C73C-4183-9595-1422C6B2C37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D70F020-C73C-4183-9595-1422C6B2C37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +46,16 @@ Global
 		{88D3DC61-8461-44E8-8239-0C8A6A1E5F0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88D3DC61-8461-44E8-8239-0C8A6A1E5F0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88D3DC61-8461-44E8-8239-0C8A6A1E5F0E}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{29BF5170-1508-40FE-994D-1A0338465E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29BF5170-1508-40FE-994D-1A0338465E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29BF5170-1508-40FE-994D-1A0338465E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29BF5170-1508-40FE-994D-1A0338465E9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46F42591-3326-497B-9ED2-70AA09E106B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F42591-3326-497B-9ED2-70AA09E106B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F42591-3326-497B-9ED2-70AA09E106B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F42591-3326-497B-9ED2-70AA09E106B3}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> Stashed changes
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

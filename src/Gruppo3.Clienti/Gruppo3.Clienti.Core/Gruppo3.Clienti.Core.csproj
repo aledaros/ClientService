@@ -9,13 +9,10 @@
     <PackageReference Include="MassTransit.AspNetCore" Version="7.2.4" />
     <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.2.4" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="7.2.4" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Gruppo3.Clienti.Domain\Gruppo3.Clienti.Domain.csproj" />
-    <ProjectReference Include="..\Gruppo3.Clienti.Infrastructure\Gruppo3.Clienti.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\..\Gruppo4-Microservizi-DTO\Gruppo4MicroserviziDTO.csproj" />
   </ItemGroup>
 
 </Project>

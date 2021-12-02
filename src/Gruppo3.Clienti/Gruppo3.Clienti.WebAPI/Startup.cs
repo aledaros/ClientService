@@ -1,3 +1,5 @@
+using Gruppo3.Clienti.Infrastructure.Repositories;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +34,9 @@ namespace Gruppo3.Clienti.WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gruppo3.Clienti.WebAPI", Version = "v1" });
             });
+
+            services.AddSingleton<ClientRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

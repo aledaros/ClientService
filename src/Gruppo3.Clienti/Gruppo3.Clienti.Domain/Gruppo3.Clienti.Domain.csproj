@@ -4,4 +4,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\ClientServiceDTO\src\Gruppo3.ClientiDTO\Gruppo3.ClientiDTO.Domain\Gruppo3.ClientiDTO.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

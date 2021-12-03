@@ -13,6 +13,8 @@ namespace Gruppo3.Clienti.Domain.Repositories
         //delete
         public Client DeleteClient(Client client);
 
+        //get by id
+        public Client GetClientById(int id);
 
     }
 }

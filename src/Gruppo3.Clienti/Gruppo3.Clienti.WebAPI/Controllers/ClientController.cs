@@ -15,30 +15,38 @@ namespace Gruppo3.Clienti.WebAPI.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetById(int id)
+        [ProducesResponseType(typeof(ClientDTO), 200)]
+        [ProducesResponseType(404)]
+        public IActionResult GetById(int id)
         {
-            return new JsonResult(id);
+            var rs = _rep.GetClientById(id);
+            if (rs == null)
+                return NotFound();
+            return Ok(rs);
         }
 
         [HttpPut]
-        public JsonResult Put(UpdateClientDTO client)
+        public IActionResult Put(UpdateClientDTO client)
         {
-            _rep.UpdateClient(client);
-            return new JsonResult(client);
+            var rs = _rep.UpdateClient(client);
+            return Ok(rs);
         }
 
         [HttpPost]
-        public JsonResult Insert(InsertClientDTO client)
+        [ProducesResponseType(typeof(ClientDTO), 201)]
+        public IActionResult Insert(InsertClientDTO client)
         {
-            _rep.InsertClient(client);
-            return new JsonResult(client);
+            var rs = _rep.InsertClient(client);
+            return Created("", rs);
         }
 
         [HttpDelete]
-        public JsonResult Delete(DeleteClientDTO client)
+        public IActionResult Delete(DeleteClientDTO client)
         {
-            _rep.DeleteClient(client);
-            return new JsonResult(client);
+            var rs = _rep.DeleteClient(client);
+            if (rs == null)
+                return NotFound();
+            return Ok(rs);
         }
 
     }

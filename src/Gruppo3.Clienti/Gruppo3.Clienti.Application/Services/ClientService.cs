@@ -1,7 +1,6 @@
 ﻿using Gruppo3.Clienti.Application.Interfaces.Services;
 using Gruppo3.Clienti.Domain.DTO;
 using Gruppo3.Clienti.Domain.Repositories;
-using Gruppo3.ClientiDTO.Domain.Entities;
 
 namespace Gruppo3.Clienti.Application.Services
 {
@@ -12,22 +11,35 @@ namespace Gruppo3.Clienti.Application.Services
         {
             _clientRepository = clientRepository;
         }
-        public DeleteClientDTO DeleteClient(DeleteClientDTO client)
+        public ClientDTO DeleteClient(DeleteClientDTO client)
         {
-            var response = _clientRepository.DeleteClient(DeleteClientDTO.ConvertDeleteClientDTOTOClient(client));
-            return DeleteClientDTO.ConvertClientToDeleteClientDTO(response);
+            var response = _clientRepository.GetClientById(client.Id);
+            if (response != null)
+            {
+                _clientRepository.DeleteClient(DeleteClientDTO.ConvertDeleteClientDTOTOClient(client));
+                return ClientDTO.ConvertClientToClientDTO(response);
+            }
+            return null;
         }
 
-        public InsertClientDTO InsertClient(InsertClientDTO client)
+        public ClientDTO GetClientById(int id)
+        {
+            var response = _clientRepository.GetClientById(id);
+            if (response != null)
+                return ClientDTO.ConvertClientToClientDTO(response);
+            return null;
+        }
+
+        public ClientDTO InsertClient(InsertClientDTO client)
         {
             var response = _clientRepository.InsertClient(InsertClientDTO.ConvertInsertClientDTOTOClient(client));
-            return InsertClientDTO.ConvertClientToInsertClientDTO(response);
+            return ClientDTO.ConvertClientToClientDTO(response);
         }
 
-        public UpdateClientDTO UpdateClient(UpdateClientDTO client)
+        public ClientDTO UpdateClient(UpdateClientDTO client)
         {
             var response = _clientRepository.UpdateClient(UpdateClientDTO.ConvertUpdateClientDTOTOClient(client));
-            return UpdateClientDTO.ConvertClientToUpdateClientDTO(response);
+            return ClientDTO.ConvertClientToClientDTO(response);
         }
     }
 }

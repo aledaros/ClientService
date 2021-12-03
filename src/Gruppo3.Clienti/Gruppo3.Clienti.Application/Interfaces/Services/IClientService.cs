@@ -5,12 +5,15 @@ namespace Gruppo3.Clienti.Application.Interfaces.Services
     public interface IClientService
     {
         //insert
-        public InsertClientDTO InsertClient(InsertClientDTO client);
+        public ClientDTO InsertClient(InsertClientDTO client);
 
         //update
-        public UpdateClientDTO UpdateClient(UpdateClientDTO client);
+        public ClientDTO UpdateClient(UpdateClientDTO client);
 
         //delete
-        public DeleteClientDTO DeleteClient(DeleteClientDTO client);
+        public ClientDTO DeleteClient(DeleteClientDTO client);
+
+        //get id
+        public ClientDTO GetClientById(int id);
     }
 }

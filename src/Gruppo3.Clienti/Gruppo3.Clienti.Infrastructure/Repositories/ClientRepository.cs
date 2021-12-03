@@ -3,6 +3,7 @@ using Gruppo3.Clienti.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using RepoDb;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace Gruppo3.Clienti.Infrastructure.Repositories
 {
@@ -18,7 +19,7 @@ namespace Gruppo3.Clienti.Infrastructure.Repositories
         {
             using (var connection = new SqlConnection(_configuration.GetConnectionString(NAME_DB)))
             {
-                connection.Delete(client);
+                var id = connection.Delete(client);
                 return client;
             }
         }
@@ -27,7 +28,7 @@ namespace Gruppo3.Clienti.Infrastructure.Repositories
         {
             using (var connection = new SqlConnection(_configuration.GetConnectionString(NAME_DB)))
             {
-                connection.Insert(client);
+                var id = connection.Insert(client);
                 return client;
             }
         }
@@ -36,8 +37,16 @@ namespace Gruppo3.Clienti.Infrastructure.Repositories
         {
             using (var connection = new SqlConnection(_configuration.GetConnectionString(NAME_DB)))
             {
-                connection.Update(client);
+                var id = connection.Update(client);
                 return client;
+            }
+        }
+
+        public Client GetClientById(int id)
+        {
+            using (var connection = new SqlConnection(_configuration.GetConnectionString(NAME_DB)))
+            {
+                return connection.Query<Client>(e => e.Id == id).FirstOrDefault();
             }
         }
     }

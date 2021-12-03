@@ -26,7 +26,7 @@ namespace Gruppo3.Clienti.Application.Services
 
         public UpdateClientDTO UpdateClient(UpdateClientDTO client)
         {
-            var response = _clientRepository.DeleteClient(UpdateClientDTO.ConvertUpdateClientDTOTOClient(client));
+            var response = _clientRepository.UpdateClient(UpdateClientDTO.ConvertUpdateClientDTOTOClient(client));
             return UpdateClientDTO.ConvertClientToUpdateClientDTO(response);
         }
     }

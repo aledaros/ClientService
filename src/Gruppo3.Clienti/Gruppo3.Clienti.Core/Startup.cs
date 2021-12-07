@@ -1,3 +1,5 @@
+using Gruppo3.Clienti.Core.Consumers;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -18,12 +20,32 @@ namespace Gruppo3.Clienti.Core
         {
             services.AddMassTransit(x =>
             {
-                x.AddConsumer<MessageConsumer>();
+                //aggiungere altre 2 classi di consumer
+                x.AddConsumer<CreateOrderConsumer>();
 
                 x.UsingInMemory((context, cfg) =>
                 {
                     cfg.ConfigureEndpoints(context);
                 });
+
+                //Usiamo RabbitMQ(?)
+                /*x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(
+                        "ip", 
+                        "/", 
+                        hst => {
+                            hst.Username("user");
+                            hst.Password("paswd");
+                        });
+                    cfg.ConfigureEndpoints(context);
+
+                    cfg.ReceiveEndpoint("queue", e =>
+                    {
+                        //aggiungere altre 2 classi di consumer
+                        x.AddConsumer<CreateClientConsumer>();
+                    });
+                });*/
             });
             services.AddMassTransitHostedService(true);
         }

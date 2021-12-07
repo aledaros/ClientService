@@ -17,6 +17,7 @@ namespace Gruppo3.Clienti.WebAPI.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(ClientDTO), 200)]
         [ProducesResponseType(404)]
+        //implementare ProducesResponseType anche in altri metodi
         public IActionResult GetById(int id)
         {
             var rs = _rep.GetClientById(id);

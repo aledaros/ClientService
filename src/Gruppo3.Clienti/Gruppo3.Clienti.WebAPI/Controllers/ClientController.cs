@@ -17,7 +17,6 @@ namespace Gruppo3.Clienti.WebAPI.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(ClientDTO), 200)]
         [ProducesResponseType(404)]
-        //implementare ProducesResponseType anche in altri metodi
         public IActionResult GetById(int id)
         {
             var rs = _rep.GetClientById(id);
@@ -27,6 +26,8 @@ namespace Gruppo3.Clienti.WebAPI.Controllers
         }
 
         [HttpPut]
+        [ProducesResponseType(typeof(ClientDTO), 201)]
+        [ProducesResponseType(404)]
         public IActionResult Put(UpdateClientDTO client)
         {
             var rs = _rep.UpdateClient(client);
@@ -35,6 +36,7 @@ namespace Gruppo3.Clienti.WebAPI.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(ClientDTO), 201)]
+        [ProducesResponseType(404)]
         public IActionResult Insert(InsertClientDTO client)
         {
             var rs = _rep.InsertClient(client);
@@ -42,6 +44,8 @@ namespace Gruppo3.Clienti.WebAPI.Controllers
         }
 
         [HttpDelete]
+        [ProducesResponseType(typeof(ClientDTO), 201)]
+        [ProducesResponseType(404)]
         public IActionResult Delete(DeleteClientDTO client)
         {
             var rs = _rep.DeleteClient(client);

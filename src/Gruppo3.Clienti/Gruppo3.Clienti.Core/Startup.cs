@@ -29,7 +29,7 @@ namespace Gruppo3.Clienti.Core
                 });
 
                 //Usiamo RabbitMQ(?)
-                /*x.UsingRabbitMq((context, cfg) =>
+                x.UsingRabbitMq((context, cfg) =>
                 {
                     cfg.Host(
                         "ip", 
@@ -43,9 +43,11 @@ namespace Gruppo3.Clienti.Core
                     cfg.ReceiveEndpoint("queue", e =>
                     {
                         //aggiungere altre 2 classi di consumer
-                        x.AddConsumer<CreateClientConsumer>();
+                        x.AddConsumer<CreateOrderConsumer>();
+                        x.AddConsumer<UpdateOrderEvent>();
+                        x.AddConsumer<DeleteOrderEvent>();
                     });
-                });*/
+                });
             });
             services.AddMassTransitHostedService(true);
         }

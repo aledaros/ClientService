@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MassTransit" Version="7.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\..\ClientServiceDTO\src\Gruppo3.ClientiDTO\Gruppo3.ClientiDTO.Domain\Gruppo3.ClientiDTO.Domain.csproj" />
     <ProjectReference Include="..\Gruppo3.Clienti.Domain\Gruppo3.Clienti.Domain.csproj" />
   </ItemGroup>

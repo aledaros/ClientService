@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Gruppo4-Microservizi-DTO\Gruppo4MicroserviziDTO.csproj" />
     <ProjectReference Include="..\Gruppo3.Clienti.Domain\Gruppo3.Clienti.Domain.csproj" />
+    <ProjectReference Include="..\Gruppo3.Clienti.Infrastructure\Gruppo3.Clienti.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,16 +1,16 @@
-﻿using Gruppo4MicroserviziDTO.DTOs;
+﻿using Gruppo3.Clienti.Domain.Entities;
 
 namespace Gruppo3.Clienti.Domain.Repositories
 {
     public interface IOrderRepository
     {
         //insert
-        public NewOrderEvent InsertOrder(NewOrderEvent orderEvent);
+        public Order InsertOrder(Order orderEvent);
 
         //update
-        public UpdatedOrderEvent UpdateOrder(UpdatedOrderEvent orderEvent);
+        public Order UpdateOrder(Order orderEvent);
 
         //delete
-        public DeletedOrderEvent DeleteOrder(DeletedOrderEvent orderEvent);
+        public Order DeleteOrder(Order orderEvent);
     }
 }

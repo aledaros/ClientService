@@ -1,14 +1,12 @@
 using Gruppo3.Clienti.Core.Consumers;
+using Gruppo3.Clienti.Domain.Repositories;
+using Gruppo3.Clienti.Infrastructure.Repositories;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Gruppo3.Clienti.Core
 {
@@ -20,36 +18,32 @@ namespace Gruppo3.Clienti.Core
         {
             services.AddMassTransit(x =>
             {
-                //aggiungere altre 2 classi di consumer
                 x.AddConsumer<CreateOrderConsumer>();
+                x.AddConsumer<UpdateOrderConsumer>();
+                x.AddConsumer<DeleteOrderConsumer>();
 
-                x.UsingInMemory((context, cfg) =>
-                {
-                    cfg.ConfigureEndpoints(context);
-                });
-
-                //Usiamo RabbitMQ(?)
+                //Usiamo RabbitMQ
                 x.UsingRabbitMq((context, cfg) =>
                 {
                     cfg.Host(
-                        "ip", 
+                        "localhost", 
                         "/", 
                         hst => {
-                            hst.Username("user");
-                            hst.Password("paswd");
+                            hst.Username("guest");
+                            hst.Password("guest");
                         });
-                    cfg.ConfigureEndpoints(context);
-
-                    cfg.ReceiveEndpoint("queue", e =>
+                    cfg.ReceiveEndpoint("testOrders", e =>
                     {
-                        //aggiungere altre 2 classi di consumer
-                        x.AddConsumer<CreateOrderConsumer>();
-                        x.AddConsumer<UpdateOrderEvent>();
-                        x.AddConsumer<DeleteOrderEvent>();
+                        e.ConfigureConsumer<CreateOrderConsumer>(context);
+                        e.ConfigureConsumer<UpdateOrderConsumer>(context);
+                        e.ConfigureConsumer<DeleteOrderConsumer>(context);
                     });
                 });
             });
             services.AddMassTransitHostedService(true);
+
+            //interface
+            services.AddSingleton<IOrderRepository, OrderRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

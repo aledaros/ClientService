@@ -1,22 +1,33 @@
 ﻿using Gruppo3.Clienti.Application.Interfaces.Services;
 using Gruppo3.Clienti.Domain.DTO;
 using Gruppo3.Clienti.Domain.Repositories;
+using Gruppo3.Clienti.Domain.Events;
+using MassTransit;
 
 namespace Gruppo3.Clienti.Application.Services
 {
     public class ClientService : IClientService
     {
         private readonly IClientRepository _clientRepository;
-        public ClientService(IClientRepository clientRepository)
+        private readonly IBus _rabbit;
+        public ClientService(IClientRepository clientRepository, IBus rabbit)
         {
             _clientRepository = clientRepository;
+            _rabbit = rabbit;
         }
-        public ClientDTO DeleteClient(DeleteClientDTO client)
+        public ClientDTO DeleteClient(DeleteClientDTO clientDTO)
         {
-            var response = _clientRepository.GetClientById(client.Id);
+            var response = _clientRepository.GetClientById(clientDTO.Id);
             if (response != null)
             {
-                _clientRepository.DeleteClient(DeleteClientDTO.ConvertDeleteClientDTOTOClient(client));
+                var client = DeleteClientDTO.ConvertDeleteClientDTOTOClient(clientDTO);
+
+                //insert to db
+                _clientRepository.DeleteClient(client);
+
+                //publish event on rabbit
+                _rabbit.Publish(DeleteClientEvent.ClientToDeleteClientEvent(client));
+
                 return ClientDTO.ConvertClientToClientDTO(response);
             }
             return null;
@@ -30,15 +41,29 @@ namespace Gruppo3.Clienti.Application.Services
             return null;
         }
 
-        public ClientDTO InsertClient(InsertClientDTO client)
+        public ClientDTO InsertClient(InsertClientDTO clientDTO)
         {
-            var response = _clientRepository.InsertClient(InsertClientDTO.ConvertInsertClientDTOTOClient(client));
+            var client = InsertClientDTO.ConvertInsertClientDTOTOClient(clientDTO);
+
+            //insert to db
+            var response = _clientRepository.InsertClient(client);
+
+            //publish event on rabbit
+            _rabbit.Publish(CreateClientEvent.ClientToCreateClientEvent(client));
+
             return ClientDTO.ConvertClientToClientDTO(response);
         }
 
-        public ClientDTO UpdateClient(UpdateClientDTO client)
+        public ClientDTO UpdateClient(UpdateClientDTO clientDTO)
         {
-            var response = _clientRepository.UpdateClient(UpdateClientDTO.ConvertUpdateClientDTOTOClient(client));
+            var client = UpdateClientDTO.ConvertUpdateClientDTOTOClient(clientDTO);
+
+            //insert to db
+            var response = _clientRepository.UpdateClient(client);
+
+            //publish event on rabbit
+            _rabbit.Publish(UpdateClientEvent.ClientToUpdateClientEvent(client));
+
             return ClientDTO.ConvertClientToClientDTO(response);
         }
     }

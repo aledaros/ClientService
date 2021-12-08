@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using RepoDb;
 using System.Data.SqlClient;
 using System.Linq;
+using MassTransit;
 
 namespace Gruppo3.Clienti.Infrastructure.Repositories
 {

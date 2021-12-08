@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using Gruppo4MicroserviziDTO.DTOs;
 using Gruppo3.Clienti.Domain.Repositories;
+using Gruppo3.Clienti.Domain.Entities;
 
 namespace Gruppo3.Clienti.Core.Consumers
 {
@@ -14,10 +15,18 @@ namespace Gruppo3.Clienti.Core.Consumers
             _orderRepository = orderRepository;
         }
 
-        //implementare 3 Consume: NewOrderEvent, UpdatedOrderEvent e DeletedOrderEvent (creare 2 file consume diversi)
         public Task Consume(ConsumeContext<NewOrderEvent> context)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Console.WriteLine($"Messaggio NewOrderEvent arrivato! {context.Message.Id}");
+                _orderRepository.InsertOrder(Order.NewOrderEventToOrder(context.Message));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Task.CompletedTask;
         }
     }
 }

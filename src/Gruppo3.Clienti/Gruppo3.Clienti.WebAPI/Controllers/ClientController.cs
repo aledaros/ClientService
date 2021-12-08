@@ -1,5 +1,6 @@
 ﻿using Gruppo3.Clienti.Application.Interfaces.Services;
 using Gruppo3.Clienti.Domain.DTO;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gruppo3.Clienti.WebAPI.Controllers

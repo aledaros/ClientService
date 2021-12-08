@@ -2,6 +2,7 @@ using Gruppo3.Clienti.Application.Interfaces.Services;
 using Gruppo3.Clienti.Application.Services;
 using Gruppo3.Clienti.Domain.Repositories;
 using Gruppo3.Clienti.Infrastructure.Repositories;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -30,6 +31,24 @@ namespace Gruppo3.Clienti.WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gruppo3.Clienti.WebAPI", Version = "v1" });
             });
 
+            //set rabbit
+            services.AddMassTransit(x =>
+            {
+                //Usiamo RabbitMQ
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(
+                        "localhost",
+                        "/",
+                        hst => {
+                            hst.Username("guest");
+                            hst.Password("guest");
+                        });
+                });
+            });
+            services.AddMassTransitHostedService(true);
+
+            //interfaces
             //client
             services.AddSingleton<IClientRepository, ClientRepository>();
             services.AddSingleton<IClientService, ClientService>();

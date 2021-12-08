@@ -1,4 +1,5 @@
-﻿using Gruppo3.Clienti.Domain.Repositories;
+﻿using Gruppo3.Clienti.Domain.Entities;
+using Gruppo3.Clienti.Domain.Repositories;
 using Gruppo4MicroserviziDTO.DTOs;
 using Microsoft.Extensions.Configuration;
 using RepoDb;
@@ -15,7 +16,7 @@ namespace Gruppo3.Clienti.Infrastructure.Repositories
         {
             _configuration = configuration;
         }
-        public DeletedOrderEvent DeleteOrder(DeletedOrderEvent orderEvent)
+        public Order DeleteOrder(Order orderEvent)
         {
             using (var connection = new SqlConnection(_configuration.GetConnectionString(NAME_DB)))
             {
@@ -24,7 +25,7 @@ namespace Gruppo3.Clienti.Infrastructure.Repositories
             }
         }
 
-        public NewOrderEvent InsertOrder(NewOrderEvent orderEvent)
+        public Order InsertOrder(Order orderEvent)
         {
             using (var connection = new SqlConnection(_configuration.GetConnectionString(NAME_DB)))
             {
@@ -33,7 +34,7 @@ namespace Gruppo3.Clienti.Infrastructure.Repositories
             }
         }
 
-        public UpdatedOrderEvent UpdateOrder(UpdatedOrderEvent orderEvent)
+        public Order UpdateOrder(Order orderEvent)
         {
             using (var connection = new SqlConnection(_configuration.GetConnectionString(NAME_DB)))
             {

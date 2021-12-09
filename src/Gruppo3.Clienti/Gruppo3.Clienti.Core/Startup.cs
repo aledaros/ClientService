@@ -44,6 +44,8 @@ namespace Gruppo3.Clienti.Core
 
             //interface
             services.AddSingleton<IOrderRepository, OrderRepository>();
+
+            RepoDb.SqlServerBootstrap.Initialize();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

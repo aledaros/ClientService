@@ -40,7 +40,7 @@ namespace Gruppo3.Clienti.Core
                     });
 
                     //update
-                    cfg.ReceiveEndpoint("Gruupo3-UpdateOrderEvent", e =>
+                    cfg.ReceiveEndpoint("Gruppo3-UpdateOrderEvent", e =>
                     {
                         e.ConfigureConsumer<UpdateOrderConsumer>(context);
                     });

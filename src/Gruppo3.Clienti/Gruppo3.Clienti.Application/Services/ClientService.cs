@@ -1,7 +1,7 @@
 ﻿using Gruppo3.Clienti.Application.Interfaces.Services;
 using Gruppo3.Clienti.Domain.DTO;
+using Gruppo3.Clienti.Domain.Entities;
 using Gruppo3.Clienti.Domain.Repositories;
-using Gruppo3.Clienti.Domain.Events;
 using MassTransit;
 
 namespace Gruppo3.Clienti.Application.Services
@@ -26,7 +26,7 @@ namespace Gruppo3.Clienti.Application.Services
                 _clientRepository.DeleteClient(client);
 
                 //publish event on rabbit
-                _rabbit.Publish(DeleteClientEvent.ClientToDeleteClientEvent(client));
+                _rabbit.Publish(Client.ClientToDeleteClientEvent(client));
 
                 return ClientDTO.ConvertClientToClientDTO(response);
             }
@@ -49,7 +49,7 @@ namespace Gruppo3.Clienti.Application.Services
             var response = _clientRepository.InsertClient(client);
 
             //publish event on rabbit
-            _rabbit.Publish(CreateClientEvent.ClientToCreateClientEvent(client));
+            _rabbit.Publish(Client.ClientToCreateClientEvent(client));
 
             return ClientDTO.ConvertClientToClientDTO(response);
         }
@@ -62,7 +62,7 @@ namespace Gruppo3.Clienti.Application.Services
             var response = _clientRepository.UpdateClient(client);
 
             //publish event on rabbit
-            _rabbit.Publish(UpdateClientEvent.ClientToUpdateClientEvent(client));
+            _rabbit.Publish(Client.ClientToUpdateClientEvent(client));
 
             return ClientDTO.ConvertClientToClientDTO(response);
         }

@@ -3,7 +3,7 @@ using RepoDb.Attributes;
 
 namespace Gruppo3.Clienti.Domain.Entities
 {
-    [Map("Client")]
+    [Map("Clients")]
     public class Client
     {
         [Identity]

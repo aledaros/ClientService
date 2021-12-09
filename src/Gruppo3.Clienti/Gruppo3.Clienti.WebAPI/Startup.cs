@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace Gruppo3.Clienti.WebAPI
 {
@@ -38,11 +39,11 @@ namespace Gruppo3.Clienti.WebAPI
                 x.UsingRabbitMq((context, cfg) =>
                 {
                     cfg.Host(
-                        "localhost",
-                        "/",
+                        Environment.GetEnvironmentVariable("HOST_RABBIT"),
+                        Environment.GetEnvironmentVariable("VHOST_RABBIT"),
                         hst => {
-                            hst.Username("guest");
-                            hst.Password("guest");
+                            hst.Username(Environment.GetEnvironmentVariable("USERNAME_RABBIT"));
+                            hst.Password(Environment.GetEnvironmentVariable("PASSWORD_RABBIT"));
                         });
                 });
             });

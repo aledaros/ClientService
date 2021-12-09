@@ -8,11 +8,11 @@ namespace Gruppo3.Clienti.Domain.Entities
     public class Order
     {
         [Identity]
-        [Map("idOrder")]
+        [Map("id")]
         public Guid Id { get; set; }
-        [Map("idClient")]
+        [Map("clientid")]
         public int IdCliente { get; set; }
-        [Map("TotalPrice")]
+        [Map("totalprice")]
         public decimal TotalPrice { get; set; }
 
         //convert method

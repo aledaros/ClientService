@@ -28,7 +28,6 @@ namespace Gruppo3.Clienti.WebAPI.Controllers
 
         [HttpPut]
         [ProducesResponseType(typeof(ClientDTO), 201)]
-        [ProducesResponseType(404)]
         public IActionResult Put(UpdateClientDTO client)
         {
             var rs = _rep.UpdateClient(client);
@@ -37,7 +36,6 @@ namespace Gruppo3.Clienti.WebAPI.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(ClientDTO), 201)]
-        [ProducesResponseType(404)]
         public IActionResult Insert(InsertClientDTO client)
         {
             var rs = _rep.InsertClient(client);

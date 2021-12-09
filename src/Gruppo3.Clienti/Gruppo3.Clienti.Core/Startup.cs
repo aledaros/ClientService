@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Gruppo3.Clienti.Core
 {
@@ -22,20 +23,31 @@ namespace Gruppo3.Clienti.Core
                 x.AddConsumer<UpdateOrderConsumer>();
                 x.AddConsumer<DeleteOrderConsumer>();
 
-                //Usiamo RabbitMQ
+                //RabbitMQ
                 x.UsingRabbitMq((context, cfg) =>
                 {
                     cfg.Host(
-                        "localhost", 
-                        "/", 
+                        Environment.GetEnvironmentVariable("HOST_RABBIT"),
+                        Environment.GetEnvironmentVariable("VHOST_RABBIT"),
                         hst => {
-                            hst.Username("guest");
-                            hst.Password("guest");
+                            hst.Username(Environment.GetEnvironmentVariable("USERNAME_RABBIT"));
+                            hst.Password(Environment.GetEnvironmentVariable("PASSWORD_RABBIT"));
                         });
-                    cfg.ReceiveEndpoint("testOrders", e =>
+                    //create
+                    cfg.ReceiveEndpoint("CreateOrderEvent", e =>
                     {
                         e.ConfigureConsumer<CreateOrderConsumer>(context);
+                    });
+
+                    //update
+                    cfg.ReceiveEndpoint("UpdateOrderEvent", e =>
+                    {
                         e.ConfigureConsumer<UpdateOrderConsumer>(context);
+                    });
+
+                    //delete
+                    cfg.ReceiveEndpoint("DeleteOrderEvent", e =>
+                    {
                         e.ConfigureConsumer<DeleteOrderConsumer>(context);
                     });
                 });

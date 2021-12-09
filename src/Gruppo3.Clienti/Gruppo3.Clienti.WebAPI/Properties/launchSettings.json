@@ -22,7 +22,11 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "USERNAME_RABBIT": "vpeeygzh",
+        "PASSWORD_RABBIT": "t0mDd3KRsJkXRV3DXzmCUfRWmDFbFu42",
+        "HOST_RABBIT": "roedeer.rmq.cloudamqp.com",
+        "VHOST_RABBIT": "vpeeygzh"
       },
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "dotnetRunMessages": "true"

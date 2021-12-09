@@ -34,19 +34,19 @@ namespace Gruppo3.Clienti.Core
                             hst.Password(Environment.GetEnvironmentVariable("PASSWORD_RABBIT"));
                         });
                     //create
-                    cfg.ReceiveEndpoint("CreateOrderEvent", e =>
+                    cfg.ReceiveEndpoint("Gruppo3-CreateOrderEvent", e =>
                     {
                         e.ConfigureConsumer<CreateOrderConsumer>(context);
                     });
 
                     //update
-                    cfg.ReceiveEndpoint("UpdateOrderEvent", e =>
+                    cfg.ReceiveEndpoint("Gruupo3-UpdateOrderEvent", e =>
                     {
                         e.ConfigureConsumer<UpdateOrderConsumer>(context);
                     });
 
                     //delete
-                    cfg.ReceiveEndpoint("DeleteOrderEvent", e =>
+                    cfg.ReceiveEndpoint("Gruppo3-DeleteOrderEvent", e =>
                     {
                         e.ConfigureConsumer<DeleteOrderConsumer>(context);
                     });

@@ -27,7 +27,7 @@ namespace Gruppo3.Clienti.WebAPI.Controllers
             return Ok(rs);
         }
 
-        [HttpGet("/all")]
+        [HttpGet("all")]
         [ProducesResponseType(typeof(IEnumerable<ClientDTO>), 200)]
         [ProducesResponseType(404)]
         public IActionResult GetAll()

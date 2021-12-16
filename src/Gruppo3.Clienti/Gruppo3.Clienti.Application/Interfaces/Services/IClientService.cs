@@ -1,4 +1,5 @@
 ﻿using Gruppo3.Clienti.Domain.DTO;
+using System.Collections.Generic;
 
 namespace Gruppo3.Clienti.Application.Interfaces.Services
 {
@@ -15,5 +16,8 @@ namespace Gruppo3.Clienti.Application.Interfaces.Services
 
         //get id
         public ClientDTO GetClientById(int id);
+
+        //get all
+        public IEnumerable<ClientDTO> GetClientAll();
     }
 }

@@ -5,6 +5,8 @@ using RepoDb;
 using System.Data.SqlClient;
 using System.Linq;
 using MassTransit;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Gruppo3.Clienti.Infrastructure.Repositories
 {
@@ -48,6 +50,14 @@ namespace Gruppo3.Clienti.Infrastructure.Repositories
             using (var connection = new SqlConnection(_configuration.GetConnectionString(NAME_DB)))
             {
                 return connection.Query<Client>(e => e.Id == id).FirstOrDefault();
+            }
+        }
+
+        public IEnumerable<Client> GetClientAll()
+        {
+            using (var connection = new SqlConnection(_configuration.GetConnectionString(NAME_DB)))
+            {
+                return connection.QueryAll<Client>();
             }
         }
     }

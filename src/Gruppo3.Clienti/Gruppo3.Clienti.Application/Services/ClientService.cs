@@ -3,6 +3,7 @@ using Gruppo3.Clienti.Domain.DTO;
 using Gruppo3.Clienti.Domain.Entities;
 using Gruppo3.Clienti.Domain.Repositories;
 using MassTransit;
+using System.Collections.Generic;
 
 namespace Gruppo3.Clienti.Application.Services
 {
@@ -31,6 +32,18 @@ namespace Gruppo3.Clienti.Application.Services
                 return ClientDTO.ConvertClientToClientDTO(response);
             }
             return null;
+        }
+
+        public IEnumerable<ClientDTO> GetClientAll()
+        {
+            var listClient = _clientRepository.GetClientAll();
+            List<ClientDTO> clientDTOs = new List<ClientDTO>();
+
+            foreach(var client in listClient)
+            {
+                clientDTOs.Add(ClientDTO.ConvertClientToClientDTO(client));
+            }
+            return clientDTOs;
         }
 
         public ClientDTO GetClientById(int id)

@@ -1,4 +1,5 @@
 ﻿using Gruppo3.Clienti.Domain.Entities;
+using System.Collections.Generic;
 
 namespace Gruppo3.Clienti.Domain.Repositories
 {
@@ -15,6 +16,9 @@ namespace Gruppo3.Clienti.Domain.Repositories
 
         //get by id
         public Client GetClientById(int id);
+
+        //get all
+        public IEnumerable<Client> GetClientAll();
 
     }
 }

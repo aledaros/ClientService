@@ -2,6 +2,7 @@
 using Gruppo3.Clienti.Domain.DTO;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Gruppo3.Clienti.WebAPI.Controllers
 {
@@ -21,6 +22,17 @@ namespace Gruppo3.Clienti.WebAPI.Controllers
         public IActionResult GetById(int id)
         {
             var rs = _rep.GetClientById(id);
+            if (rs == null)
+                return NotFound();
+            return Ok(rs);
+        }
+
+        [HttpGet("/all")]
+        [ProducesResponseType(typeof(IEnumerable<ClientDTO>), 200)]
+        [ProducesResponseType(404)]
+        public IActionResult GetAll()
+        {
+            var rs = _rep.GetClientAll();
             if (rs == null)
                 return NotFound();
             return Ok(rs);

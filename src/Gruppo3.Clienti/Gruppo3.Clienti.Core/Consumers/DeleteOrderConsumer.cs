@@ -1,6 +1,6 @@
-﻿using Gruppo3.Clienti.Domain.Consumers;
-using Gruppo3.Clienti.Domain.Entities;
+﻿using Gruppo3.Clienti.Domain.Entities;
 using Gruppo3.Clienti.Domain.Repositories;
+using Gruppo3.ClientiDTO.Domain.Commands;
 using MassTransit;
 using System;
 using System.Threading.Tasks;

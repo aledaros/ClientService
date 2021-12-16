@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Gruppo3.ClientiDTO.Domain" Version="1.1.0" />
     <PackageReference Include="MassTransit" Version="7.2.4" />
     <PackageReference Include="MassTransit.AspNetCore" Version="7.2.4" />
     <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.2.4" />

@@ -1,4 +1,4 @@
-﻿using Gruppo3.Clienti.Domain.Consumers;
+﻿using Gruppo3.ClientiDTO.Domain.Commands;
 using RepoDb.Attributes;
 using System;
 

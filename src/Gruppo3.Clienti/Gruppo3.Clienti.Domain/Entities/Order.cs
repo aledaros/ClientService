@@ -1,4 +1,4 @@
-﻿using Gruppo4MicroserviziDTO.DTOs;
+﻿using Gruppo3.Clienti.Domain.Consumers;
 using RepoDb.Attributes;
 using System;
 
@@ -16,7 +16,7 @@ namespace Gruppo3.Clienti.Domain.Entities
         public decimal TotalPrice { get; set; }
 
         //convert method
-        public static Order DeletedOrderEventToOrder(DeletedOrderEvent deletedOrderEvent)
+        public static Order DeletedOrderEventToOrder(ClientDeleteOrder deletedOrderEvent)
         {
             return new Order
             {
@@ -24,7 +24,7 @@ namespace Gruppo3.Clienti.Domain.Entities
             };
         }
 
-        public static Order NewOrderEventToOrder(NewOrderEvent newOrderEvent)
+        public static Order NewOrderEventToOrder(ClientNewOrder newOrderEvent)
         {
             return new Order
             {
@@ -34,7 +34,7 @@ namespace Gruppo3.Clienti.Domain.Entities
             };
         }
 
-        public static Order UpdatedOrderEventToOrder(UpdatedOrderEvent updatedOrderEvent)
+        public static Order UpdatedOrderEventToOrder(ClientUpdateOrder updatedOrderEvent)
         {
             return new Order
             {

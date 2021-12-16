@@ -1,13 +1,13 @@
 ﻿using MassTransit;
 using System;
 using System.Threading.Tasks;
-using Gruppo4MicroserviziDTO.DTOs;
 using Gruppo3.Clienti.Domain.Repositories;
 using Gruppo3.Clienti.Domain.Entities;
+using Gruppo3.Clienti.Domain.Consumers;
 
 namespace Gruppo3.Clienti.Core.Consumers
 {
-    public class CreateOrderConsumer : IConsumer<NewOrderEvent>
+    public class CreateOrderConsumer : IConsumer<ClientNewOrder>
     {
         private readonly IOrderRepository _orderRepository;
         public CreateOrderConsumer(IOrderRepository orderRepository)
@@ -15,7 +15,7 @@ namespace Gruppo3.Clienti.Core.Consumers
             _orderRepository = orderRepository;
         }
 
-        public Task Consume(ConsumeContext<NewOrderEvent> context)
+        public Task Consume(ConsumeContext<ClientNewOrder> context)
         {
             try
             {
